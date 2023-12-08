@@ -19,7 +19,12 @@ jobs:
         distribution: 'adopt'
         java-version: '8'
 
+    - name: Set up Maven
+      run: |
+        sudo apt-get install -y maven
+      shell: bash
+
     - name: Build WAR file
       run: |
-        ./mvnw clean package
+        mvn clean package
       
