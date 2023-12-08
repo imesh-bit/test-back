@@ -1,4 +1,4 @@
-name: Build and Deploy WAR
+name: Java EE Build
 
 on:
   push:
@@ -10,21 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up JDK
+    - name: Set up Java
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
         java-version: '8'
 
-    - name: Build with Maven
+    - name: Build WAR file
       run: |
         ./mvnw clean package
-
-    - name: Upload WAR artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: myapp
-        path: target/*.war
+      
